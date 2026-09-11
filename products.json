@@ -1,0 +1,467 @@
+[
+  {
+    "number": "1000005",
+    "name": "Test",
+    "category": null
+  },
+  {
+    "number": "ABUIC",
+    "name": "Abus Kettenschloss Iven Chain",
+    "category": null
+  },
+  {
+    "number": "BRKSLBR-S-CONTAINER",
+    "name": "Brooks Slender Leather, Brown",
+    "category": null
+  },
+  {
+    "number": "BRKB67-S-CONTAINER",
+    "name": "Brooks B67, Brown",
+    "category": null
+  },
+  {
+    "number": "BRKSLB-S-CONTAINER",
+    "name": "Brooks Slender Leather, Black",
+    "category": null
+  },
+  {
+    "number": "BRKER-S-CONTAINER",
+    "name": "Brooks Ergonomic Rubber",
+    "category": null
+  },
+  {
+    "number": "BRKB17-S-CONTAINER",
+    "name": "Brooks B17, Black",
+    "category": null
+  },
+  {
+    "number": "ERGTOCT",
+    "name": "Lenkererhöhung",
+    "category": null
+  },
+  {
+    "number": "BRKB67-S",
+    "name": "Brooks B67, Brown - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "CLYGPS",
+    "name": "GPS-Tracker",
+    "category": null
+  },
+  {
+    "number": "RCKTB",
+    "name": "Racktime BASKIT",
+    "category": null
+  },
+  {
+    "number": "CLYCOM50-CONTAINER",
+    "name": "Clayton O2 - Comfort",
+    "category": null
+  },
+  {
+    "number": "CLYO2ACTM54-CONTAINER",
+    "name": "Clayton O2 - Active",
+    "category": null
+  },
+  {
+    "number": "CLYRCKTG",
+    "name": "Racktime Gepäckträger",
+    "category": null
+  },
+  {
+    "number": "CLYKH",
+    "name": "Korb Hinterrad",
+    "category": null
+  },
+  {
+    "number": "CLYFG",
+    "name": "Front Gepäckträger",
+    "category": null
+  },
+  {
+    "number": "CLYKV",
+    "name": "Korb Vorderrad",
+    "category": null
+  },
+  {
+    "number": "CLYO2ACTM54",
+    "name": "Clayton O2 - Active - Medium (54)",
+    "category": null
+  },
+  {
+    "number": "BRKB67-B",
+    "name": "Brooks B67, Brown - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "BRKC19-S-CONTAINER",
+    "name": "Brooks C19, Cambium",
+    "category": null
+  },
+  {
+    "number": "LTSCL-S-CONTAINER",
+    "name": "Comfort Lenker | LightSkin",
+    "category": null
+  },
+  {
+    "number": "CLYO2ACTL60",
+    "name": "Clayton O2 - Active - Large (60)",
+    "category": null
+  },
+  {
+    "number": "BRKB17-B",
+    "name": "Brooks B17, Black - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "BRKER-S",
+    "name": "Brooks Ergonomic Rubber - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKER-B",
+    "name": "Brooks Ergonomic Rubber - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "CLYLEG-S-CONTAINER",
+    "name": "Clayton Leder Ergo, Braun",
+    "category": null
+  },
+  {
+    "number": "LTSCL-S",
+    "name": "Comfort Lenker | LightSkin - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKC19-S",
+    "name": "Brooks C19, Cambium - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKSLB-S",
+    "name": "Brooks Slender Leather, Black - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKSLB-B",
+    "name": "Brooks Slender Leather, Black - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "BRKSLBR-B",
+    "name": "Brooks Slender Leather, Brown - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "LTSCL-B",
+    "name": "Comfort Lenker | LightSkin - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "BRKB17-S",
+    "name": "Brooks B17, Black - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKSLBR-S",
+    "name": "Brooks Slender Leather, Brown - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "BRKC19-B",
+    "name": "Brooks C19, Cambium - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "CLYCOM55",
+    "name": "Clayton O2 - Comfort - Large (55)",
+    "category": null
+  },
+  {
+    "number": "CLYCOM50",
+    "name": "Clayton O2 - Comfort - Medium (50)",
+    "category": null
+  },
+  {
+    "number": "CLYLEG-S",
+    "name": "Clayton Leder Ergo, Braun - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "CLYLEG-B",
+    "name": "Clayton Leder Ergo, Braun - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "CLY10191",
+    "name": "Versand",
+    "category": null
+  },
+  {
+    "number": "CLY10192",
+    "name": "Rabatt",
+    "category": null
+  },
+  {
+    "number": "SRE-S-CONTAINER",
+    "name": "Selle Royal Essenza",
+    "category": null
+  },
+  {
+    "number": "SRE-S",
+    "name": "Selle Royal Essenza - Standard",
+    "category": null
+  },
+  {
+    "number": "SRE-B",
+    "name": "Selle Royal Essenza - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "SPCMP",
+    "name": "SPC+ Handlebar Mount Pro",
+    "category": null
+  },
+  {
+    "number": "SPUPC",
+    "name": "SP Universal Phone Clamp SPC+",
+    "category": null
+  },
+  {
+    "number": "CLYIW",
+    "name": "Inspektion & Wartung",
+    "category": null
+  },
+  {
+    "number": "1012",
+    "name": "Provision: Verkauf Clayton O2",
+    "category": null
+  },
+  {
+    "number": "1013",
+    "name": "Rabatt Vorführmodell",
+    "category": null
+  },
+  {
+    "number": "1014",
+    "name": "Montage",
+    "category": null
+  },
+  {
+    "number": "1015",
+    "name": "Reparatur E-Bike",
+    "category": null
+  },
+  {
+    "number": "CLYGERGB-CONTAINER",
+    "name": "Clayton Leder Ergo, Black",
+    "category": null
+  },
+  {
+    "number": "CLYGERGB-S",
+    "name": "Clayton Leder Ergo, Black - Einzelpreis",
+    "category": null
+  },
+  {
+    "number": "CLYGERGB-B",
+    "name": "Clayton Leder Ergo, Black - E-Bike Bundle",
+    "category": null
+  },
+  {
+    "number": "CLYGRSP",
+    "name": "Gepäckträger Rücklicht Spanninga",
+    "category": null
+  },
+  {
+    "number": "CLYAK",
+    "name": "Clayton O2 Akku",
+    "category": null
+  },
+  {
+    "number": "ABUSGM",
+    "name": "Abus Goose 6208K - Mint",
+    "category": null
+  },
+  {
+    "number": "ABUSGB",
+    "name": "Abus Goose 6208K - Black",
+    "category": null
+  },
+  {
+    "number": "ABUSYRTS",
+    "name": "Abus Yarnit 4004K - Sand",
+    "category": null
+  },
+  {
+    "number": "1017",
+    "name": "Materialaufwand | Reparatur Clayton E-Bike",
+    "category": null
+  },
+  {
+    "number": "1018",
+    "name": "Arbeitslohn | Reparatur Clayton E-Bike",
+    "category": null
+  },
+  {
+    "number": "BRKB17",
+    "name": "Brooks B17, Brown",
+    "category": null
+  },
+  {
+    "number": "CLY10189",
+    "name": "Display extension cable",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10190",
+    "name": "Battery Cover painted",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10193",
+    "name": "Frame-Male L",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10194",
+    "name": "Frame-Male M",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10195",
+    "name": "Frame-Female M",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10196",
+    "name": "Frame-Female L",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10197",
+    "name": "Front Fork",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10198",
+    "name": "Hydraulic disc brake Front",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10199",
+    "name": "Hydraulic disc brake Rear",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10200",
+    "name": "Disc",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10201",
+    "name": "Headset",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10202",
+    "name": "Spacer",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10203",
+    "name": "Seat post clamp",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10204",
+    "name": "Tire",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10205",
+    "name": "Inner Tube",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10206",
+    "name": "Rim",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10207",
+    "name": "Front Hub",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10208",
+    "name": "Sprocket Cover",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10209",
+    "name": "Sprocket Spider",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10210",
+    "name": "Crank arm L=R",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10211",
+    "name": "Pedal",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10212",
+    "name": "Front Sprocket",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10213",
+    "name": "Rear Sprocket",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10214",
+    "name": "Belt",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10215",
+    "name": "Bell",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10216",
+    "name": "Charger",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10217",
+    "name": "Front & Rear light cable",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10218",
+    "name": "Kickstand",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10219",
+    "name": "Fender sets - M",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10220",
+    "name": "Fender Sets - L",
+    "category": "C-Parts"
+  },
+  {
+    "number": "CLY10221",
+    "name": "Vetriebsprovision Clayton Bikes Store",
+    "category": "Zubehör"
+  }
+]
