@@ -36,7 +36,13 @@ async function syncJobradOrders() {
     const mapper = new SkuMapper(XENTRAL_API_URL, XENTRAL_API_TOKEN);
     const xentral = new XentralService(XENTRAL_API_URL, XENTRAL_API_TOKEN);
 
+    const today = new Date().toISOString().split('T')[0];
     for (const offer of offers) {
+      const offerDate = new Date(offer.lastUpdateAt || offer.createdAt).toISOString().split('T')[0];
+      if (offerDate !== today) {
+        console.log(`-> Offer ${offer.offerNumber} is from ${offerDate}, not today (${today}). Skipping.`);
+        continue;
+      }
       console.log(`Checking Offer: ${offer.offerNumber} for ${offer.customerName}...`);
       
       const exists = await xentral.findSalesOrderByCustomerOrderNumber(offer.offerNumber);
