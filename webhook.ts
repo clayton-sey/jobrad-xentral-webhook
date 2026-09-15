@@ -89,6 +89,6 @@ app.listen(PORT, () => {
   // Direkt einmal beim Start ausführen
   syncJobradOrders();
 
-  // Alle 15 Minuten (900.000 ms) automatisch prüfen
-  setInterval(syncJobradOrders, 15 * 60 * 1000);
+  // Alle 60 Minuten (900.000 ms) automatisch prüfen
+  setInterval(syncJobradOrders, 60 * 60 * 1000);
 });
