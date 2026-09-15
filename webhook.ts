@@ -29,11 +29,9 @@ async function fetchLatestDoneOffers() {
   return data.data || [];
 }
 
-app.post('/webhook/jobrad', async (req, res) => {
-  res.status(200).send("Webhook received");
-
+async function syncJobradOrders() {
+  console.log(`[${new Date().toISOString()}] Syncing Jobrad Orders...`);
   try {
-    console.log("Jobrad Webhook Triggered. Fetching latest offers...");
     const offers = await fetchLatestDoneOffers();
     const mapper = new SkuMapper(XENTRAL_API_URL, XENTRAL_API_TOKEN);
     const xentral = new XentralService(XENTRAL_API_URL, XENTRAL_API_TOKEN);
@@ -69,11 +67,28 @@ app.post('/webhook/jobrad', async (req, res) => {
       console.log(`-> Success! Order created with ID: ${order.id}`);
     }
   } catch (err) {
-    console.error("Error processing Webhook:", err);
+    console.error("Error during sync:", err);
   }
+}
+
+// Manueller Trigger falls gewünscht
+app.post('/webhook/jobrad', async (req, res) => {
+  res.status(200).send("Sync triggered manually");
+  syncJobradOrders(); // Asynchron im Hintergrund laufen lassen
+});
+
+// Health-Check für Railway
+app.get('/', (req, res) => {
+  res.status(200).send("Jobrad Sync Service is running");
 });
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Jobrad Webhook Server running on port ${PORT}`);
+  console.log(`Jobrad Sync Service running on port ${PORT}`);
+  
+  // Direkt einmal beim Start ausführen
+  syncJobradOrders();
+
+  // Alle 15 Minuten (900.000 ms) automatisch prüfen
+  setInterval(syncJobradOrders, 15 * 60 * 1000);
 });
