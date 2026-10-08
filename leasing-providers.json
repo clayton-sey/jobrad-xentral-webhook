@@ -1,0 +1,57 @@
+[
+  {
+    "triggerTag": "Bikeleasing.de",
+    "discountPercent": 6,
+    "documentAddress": {
+      "name": "Bikeleasing-Service GmbH & Co. KG",
+      "street": "Ernst-August-Straße 1-2",
+      "zipCode": "37170",
+      "city": "Uslar",
+      "country": "DE"
+    }
+  },
+  {
+    "triggerTag": "BusinessBike",
+    "discountPercent": 5,
+    "documentAddress": {
+      "name": "BusinessBike GmbH",
+      "street": "Nürnberger Str. 38",
+      "zipCode": "91413",
+      "city": "Neustadt an der Aisch",
+      "country": "DE"
+    }
+  },
+  {
+    "triggerTag": "Deutsche Dienstrad",
+    "discountPercent": 5,
+    "documentAddress": {
+      "name": "DD Deutsche Dienstrad GmbH",
+      "street": "Straßburgstraße 32",
+      "zipCode": "97424",
+      "city": "Schweinfurt",
+      "country": "DE"
+    }
+  },
+  {
+    "triggerTag": "Mein-Dienstrad",
+    "discountPercent": 5,
+    "documentAddress": {
+      "name": "Mein Dienstrad GmbH",
+      "street": "Stau 123",
+      "zipCode": "26122",
+      "city": "Oldenburg",
+      "country": "DE"
+    }
+  },
+  {
+    "triggerTag": "Lease a Bike",
+    "discountPercent": 5,
+    "documentAddress": {
+      "name": "Lease a Bike Deutschland GmbH",
+      "street": "Mühlenstraße 28",
+      "zipCode": "49661",
+      "city": "Cloppenburg",
+      "country": "DE"
+    }
+  }
+]

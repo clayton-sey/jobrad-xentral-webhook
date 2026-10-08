@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { SkuMapper } from './sku-mapper';
 import { XentralService } from './xentral';
+import { runLeasingAgent } from './leasing-agent';
 
 dotenv.config();
 
@@ -80,7 +81,8 @@ async function syncJobradOrders() {
 // Manueller Trigger falls gewünscht
 app.post('/webhook/jobrad', async (req, res) => {
   res.status(200).send("Sync triggered manually");
-  syncJobradOrders(); // Asynchron im Hintergrund laufen lassen
+  syncJobradOrders();
+  runLeasingAgent(); // Asynchron im Hintergrund laufen lassen
 });
 
 // Health-Check für Railway
@@ -96,5 +98,5 @@ app.listen(PORT, () => {
   syncJobradOrders();
 
   // Alle 60 Minuten (900.000 ms) automatisch prüfen
-  setInterval(syncJobradOrders, 60 * 60 * 1000);
+  setInterval(() => { syncJobradOrders(); runLeasingAgent(); }, 15 * 60 * 1000); // 15 Minuten fuer alles
 });

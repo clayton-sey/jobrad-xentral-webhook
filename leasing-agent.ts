@@ -1,0 +1,78 @@
+import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
+import { XentralService } from "./xentral";
+
+dotenv.config();
+
+const XENTRAL_API_URL = process.env.XENTRAL_API_URL!;
+const XENTRAL_API_TOKEN = process.env.XENTRAL_API_TOKEN!;
+
+async function request(endpoint: string, options: RequestInit = {}) {
+  const response = await fetch(`${XENTRAL_API_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Authorization": "Bearer " + XENTRAL_API_TOKEN,
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      ...options.headers
+    }
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    console.error(`Xentral API Error: ${response.status} ${text}`);
+    return null;
+  }
+  return response.json();
+}
+
+export async function runLeasingAgent() {
+  console.log(`[${new Date().toISOString()}] Scanning for Leasing Orders...`);
+  
+  const providersPath = path.join(__dirname, "leasing-providers.json");
+  if (!fs.existsSync(providersPath)) return;
+  const providers = JSON.parse(fs.readFileSync(providersPath, "utf8"));
+  
+  const productRes = await request(`/api/v1/products?filter[0][key]=number&filter[0][op]=equals&filter[0][value]=CLY10192`);
+  if (!productRes || !productRes.data || productRes.data.length === 0) return;
+  const discountProductId = productRes.data[0].id;
+
+  for (const provider of providers) {
+    const qs = `?filter[0][key]=tags&filter[0][op]=equals&filter[0][value]=${encodeURIComponent(provider.triggerTag)}`;
+    const ordersRes = await request(`/api/v3/salesOrders${qs}`);
+    if (!ordersRes || !ordersRes.data) continue;
+
+    for (const order of ordersRes.data) {
+      const existingTags = order.tags || [];
+      const hasProcessedTag = existingTags.some((t: any) => t.title === "Leasing-Processed" || t.title === "Jobrad");
+      if (hasProcessedTag) continue;
+      
+      console.log(`Processing Order ${order.id} for ${provider.triggerTag}...`);
+      
+      const grossTotal = parseFloat(order.totals?.gross?.amount || "0");
+      if (grossTotal > 0 && provider.discountPercent > 0) {
+        const discountAmount = grossTotal * (provider.discountPercent / 100);
+        const netDiscount = discountAmount / 1.19;
+        
+        await request(`/api/v3/salesOrders/${order.id}/lineItems`, {
+          method: "POST",
+          body: JSON.stringify({
+            product: { id: discountProductId },
+            quantity: 1,
+            price: {
+              net: { amount: (-netDiscount).toFixed(2), currency: "EUR" },
+              gross: { amount: (-discountAmount).toFixed(2), currency: "EUR" }
+            }
+          })
+        });
+      }
+      
+      const newTags = [...existingTags.map((t: any) => ({title: t.title})), {title: "Leasing-Processed"}];
+      await request(`/api/v3/salesOrders/${order.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ documentAddress: provider.documentAddress, tags: newTags })
+      });
+      console.log(`-> Order ${order.id} fully processed!`);
+    }
+  }
+}
