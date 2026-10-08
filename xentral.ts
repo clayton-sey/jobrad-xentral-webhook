@@ -61,7 +61,25 @@ export class XentralService {
     return json.data && json.data.length > 0;
   }
 
-  async createSalesOrder(customerId: string, lineItems: any[], tags: string[] = [], projectId: string | null = null, customerOrderNumber: string | null = null) {
+  async createSalesOrder(customerId: string, lineItems: any[], tags: string[] = [], projectId: string | null = null, customerOrderNumber: string | null = null, customerName: string = "") {
+
+    // Holt die echte Kundenadresse für die Lieferadresse
+    const addressRes = await this.request(`/api/v2/customers/${customerId}/addresses`);
+    const addressData = await addressRes.json();
+    const addresses = addressData.data || [];
+    let realAddress = addresses.find((a: any) => a.name !== "JobRad GmbH" && a.street);
+    
+    let deviatingShipToAddress: any = { name: customerName };
+    if (realAddress) {
+      deviatingShipToAddress = {
+        name: realAddress.name || customerName,
+        street: realAddress.street,
+        zipCode: realAddress.zip,
+        city: realAddress.city,
+        country: realAddress.country
+      };
+    }
+
     const payload = {
       address: { id: customerId },
       tags: tags.map(t => ({title: t})),
@@ -73,7 +91,9 @@ export class XentralService {
         city: "Freiburg",
         country: "DE"
       },
+      deviatingShipToAddress: deviatingShipToAddress,
       customerOrderNumber: customerOrderNumber,
+
       lineItems: lineItems.map(item => ({
         product: { id: item.productId },
         quantity: item.quantity,

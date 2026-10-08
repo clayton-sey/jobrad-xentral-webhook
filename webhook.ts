@@ -69,7 +69,7 @@ async function syncJobradOrders() {
          projectId = PROJECT_ID_CLAYTON_SHOP;
       }
 
-      const order = await xentral.createSalesOrder(customerId, lineItems, tags, projectId, offer.offerNumber);
+      const order = await xentral.createSalesOrder(customerId, lineItems, tags, projectId, offer.offerNumber, offer.customerName);
       console.log(`-> Success! Order created with ID: ${order.id}`);
     }
   } catch (err) {
