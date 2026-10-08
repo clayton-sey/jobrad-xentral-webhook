@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
-import { XentralService } from "./xentral";
 
 dotenv.config();
 
@@ -43,12 +42,33 @@ export async function runLeasingAgent() {
     if (!ordersRes || !ordersRes.data) continue;
 
     for (const order of ordersRes.data) {
-      const existingTags = order.tags || [];
+      // 1. Fetch tags from V1 API to preserve them
+      const v1Order = await request(`/api/v1/salesOrders/${order.id}`);
+      const existingTags = v1Order?.data?.tags || [];
       const hasProcessedTag = existingTags.some((t: any) => t.title === "Leasing-Processed" || t.title === "Jobrad");
       if (hasProcessedTag) continue;
       
       console.log(`Processing Order ${order.id} for ${provider.triggerTag}...`);
       
+      // 2. Fetch customer address for shipping override
+      const customerId = order.address?.id;
+      let deviatingShipToAddress: any = null;
+      if (customerId) {
+        const addressRes = await request(`/api/v2/customers/${customerId}/addresses`);
+        const addresses = addressRes?.data || [];
+        const realAddress = addresses.find((a: any) => a.name !== provider.documentAddress.name && a.street);
+        if (realAddress) {
+          deviatingShipToAddress = {
+            name: realAddress.name || order.customerName || "Kunde",
+            street: realAddress.street,
+            zipCode: realAddress.zip,
+            city: realAddress.city,
+            country: realAddress.country
+          };
+        }
+      }
+
+      // 3. Add Discount Line Item
       const grossTotal = parseFloat(order.totals?.gross?.amount || "0");
       if (grossTotal > 0 && provider.discountPercent > 0) {
         const discountAmount = grossTotal * (provider.discountPercent / 100);
@@ -67,10 +87,20 @@ export async function runLeasingAgent() {
         });
       }
       
-      const newTags = [...existingTags.map((t: any) => ({title: t.title})), {title: "Leasing-Processed"}];
+      // 4. Preserve existing tags, replace triggerTag with Leasing-Processed
+      const preservedTags = existingTags
+        .filter((t: any) => t.title !== provider.triggerTag)
+        .map((t: any) => ({title: t.title}));
+      preservedTags.push({title: "Leasing-Processed"});
+
+      // 5. Update Order Address & Tags
       await request(`/api/v3/salesOrders/${order.id}`, {
         method: "PATCH",
-        body: JSON.stringify({ documentAddress: provider.documentAddress, tags: newTags })
+        body: JSON.stringify({ 
+          documentAddress: provider.documentAddress, 
+          deviatingShipToAddress: deviatingShipToAddress,
+          tags: preservedTags 
+        })
       });
       console.log(`-> Order ${order.id} fully processed!`);
     }
