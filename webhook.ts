@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { SkuMapper } from './sku-mapper';
 import { XentralService } from './xentral';
-import { runLeasingAgent } from './leasing-agent';\nimport { runProjectAgent } from './project-agent';
+import { runLeasingAgent } from './leasing-agent';
+import { runProjectAgent } from './project-agent';
 
 dotenv.config();
 
