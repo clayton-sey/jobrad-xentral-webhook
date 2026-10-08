@@ -49,19 +49,7 @@ export class XentralService {
     if (!location) throw new Error("Kein Location-Header bei Customer-Anlage erhalten!");
     const customerId = location.split("/").pop()!;
 
-    // Abweichende Rechnungsadresse hinzufügen
-    const addressPayload = {
-      type: "billingaddress",
-      name: "JobRad GmbH",
-      street: "Postfach 1367",
-      zip: "79013",
-      city: "Freiburg",
-      country: "DE"
-    };
-    await this.request(`/api/v2/customers/${customerId}/addresses`, {
-      method: "POST",
-      body: JSON.stringify(addressPayload)
-    });
+
 
     return customerId;
   }
@@ -78,6 +66,13 @@ export class XentralService {
       address: { id: customerId },
       tags: tags.map(t => ({title: t})),
       project: projectId ? { id: projectId } : null,
+      documentAddress: {
+        name: "JobRad GmbH",
+        street: "Postfach 1367",
+        zipCode: "79013",
+        city: "Freiburg",
+        country: "DE"
+      },
       customerOrderNumber: customerOrderNumber,
       lineItems: lineItems.map(item => ({
         product: { id: item.productId },
